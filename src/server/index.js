@@ -1,7 +1,10 @@
-const express = require('express');
-const path = require('path');
-const app = express();
-const port = 3000;
+//import {express, path, app, port} from "./config.js";
+
+const config = require('./config');
+const express = config.express;
+const path = config.path;
+const app = config.app;
+const port = config.port;
 
 app.get('/', (req, res) => {
     res.sendFile(path.resolve("../client/index.html"), function (err) {
@@ -9,16 +12,6 @@ app.get('/', (req, res) => {
         console.log('something bad happened', err);
     } else {
         console.log('Sent:', path.resolve("../client/index.html"));
-    }
-    })
-});
-
-app.get('/style.css', (req, res) => {
-    res.sendFile(path.resolve("../client/style.css"), function (err) {
-    if (err) {
-        console.log('something bad happened', err);
-    } else {
-        console.log('Sent:', path.resolve("../client/style.css"));
     }
     })
 });
