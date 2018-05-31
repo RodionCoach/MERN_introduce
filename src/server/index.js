@@ -6,6 +6,8 @@ const path = config.path;
 const app = config.app;
 const port = config.port;
 
+app.use(express.static(path.resolve('../client/css')));
+
 app.get('/', (req, res) => {
     res.sendFile(path.resolve("../client/index.html"), function (err) {
     if (err) {
