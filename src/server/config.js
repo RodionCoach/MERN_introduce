@@ -3,7 +3,7 @@
  */
 exports.express = require('express');
 exports.path = require('path');
-exports.app = express();
+exports.app = exports.express();
 exports.port = 3000;
 
 //export {express, path, app, port};
