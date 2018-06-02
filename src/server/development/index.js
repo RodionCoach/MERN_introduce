@@ -1,19 +1,19 @@
 //import {express, path, app, port} from "./config.js";
 
-const config = require('./config');
-const express = config.express;
-const path = config.path;
-const app = config.app;
-const port = config.port;
+import path from 'path';
+import express from 'express';
+import {port} from './config';
+console.log();
+const app = express();
 
-app.use(express.static(path.resolve('../client/css')));
+app.use(express.static(path.resolve('./src/client/css')));
 
 app.get('/', (req, res) => {
-    res.sendFile(path.resolve("../client/index.html"), function (err) {
+    res.sendFile(path.resolve("./src/client/index.html"), function (err) {
     if (err) {
         console.log('something bad happened', err);
     } else {
-        console.log('Sent:', path.resolve("../client/index.html"));
+        console.log('Sent:', path.resolve("./src/client/index.html"));
     }
     })
 });

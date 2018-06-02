@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon"
+    "compiler": "babel src/server/development -d src/server/public --presets es2015",
+    "runServer": "node src/server/public/index",
+    "watch": "nodemon --exec babel-node src/server/development/index.js --presets es2015"
   },
   "repository": {
     "type": "git",
@@ -22,6 +24,9 @@
     "path": "^0.12.7"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-preset-es2015": "^6.24.1",
     "nodemon": "^1.17.5",
     "winston": "^2.4.2"
   }
