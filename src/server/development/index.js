@@ -2,7 +2,7 @@
 
 import path from 'path';
 import express from 'express';
-import {port} from './config';
+import config from 'config';
 import log from 'winston';
 
 const app = express();
@@ -19,9 +19,9 @@ app.get('/', (req, res) => {
     })
 });
 
-app.listen(port, (err) => {
+app.listen(config.get('server.port'), (err) => {
     if (err) {
         log.error('something bad happened', err)
     }
-    log.info(`server is listening on ${port}`)
+    log.info(`server is listening on ${config.get('server.port')}`)
 });
