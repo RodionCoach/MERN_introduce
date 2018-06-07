@@ -4,7 +4,7 @@ import path from 'path';
 import express from 'express';
 import config from 'config';
 import log from 'winston';
-import {serverRouters} from '../routers';
+import {serverRouters} from './routers';
 
 const app = express();
 
