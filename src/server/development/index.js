@@ -4,20 +4,13 @@ import path from 'path';
 import express from 'express';
 import config from 'config';
 import log from 'winston';
+import {serverRouters} from '../routers';
 
 const app = express();
 
 app.use(express.static(path.resolve('./src/client/css')));
 
-app.get('/', (req, res) => {
-    res.sendFile(path.resolve("./src/client/index.html"), function (err) {
-    if (err) {
-        log.error('something bad happened', err);
-    } else {
-        log.info('Sent:', path.resolve("./src/client/index.html"));
-    }
-    })
-});
+serverRouters(app);
 
 app.listen(config.get('server.port'), (err) => {
     if (err) {
