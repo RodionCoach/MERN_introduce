@@ -15,8 +15,8 @@ export const serverRouters = (app) => {
             }
         })
     });
-    app.get('/login/:email/:pass', login);
+    app.post('/login/:email/:pass', login);
     app.get('/findUser/:email', findUser);
 
-    app.get('/addUser/:email/:pass', addUser);
+    app.post('/addUser/:email/:pass', addUser);
 };

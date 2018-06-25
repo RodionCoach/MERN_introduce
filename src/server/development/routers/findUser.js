@@ -1,4 +1,4 @@
-import {User} from '../moduls/user';
+import {User} from '../models/user';
 
 export const findUser = (req, res) => {
     User.findOne({email: req.params.email}, (err, answer)=> {

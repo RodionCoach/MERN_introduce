@@ -1,4 +1,4 @@
-import {User} from '../moduls/user';
+import {User} from '../models/user';
 import log from 'winston';
 
 export const addUser = (req, res) => {
