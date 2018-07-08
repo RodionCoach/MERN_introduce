@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>TEST</title>
 
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
 
 </head>
 <body>
@@ -19,6 +19,40 @@
     <div class="flex-grid-element">L</div>
     <div class="flex-grid-element">O</div>
 </div>
-
+<div>
+    <form name="upload">
+        <input type="file" name="file">
+        <input type="submit" value="Загрузить">
+    </form>    
+</div>
 </body>
+<script>
+    document.forms.upload.onsubmit = function() {
+        var input = this.elements.file;
+        var file = input.files[0];
+        if (file) {
+            upload(file);
+        }
+        return false;
+    };
+    function upload(file) {
+
+        var xhr = new XMLHttpRequest();
+        xhr.upload.onprogress = function(event) {
+            console.log(event.loaded + ' / ' + event.total);
+        };
+        xhr.onload = xhr.onerror = function() {
+            if (this.status == 200) {
+                console.log("success");
+            } else {
+                console.log("error " + this.status);
+            }
+        };
+
+        xhr.open("PUT", "http://localhost:3000/getFile/", true);
+        xhr.setRequestHeader('fileName', file.name);
+        xhr.send(file);
+
+    }
+</script>
 </html>

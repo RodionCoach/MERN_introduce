@@ -2,6 +2,7 @@ import path from 'path';
 import {findUser} from './findUser';
 import {addUser} from './addUser';
 import {login} from './login';
+import {getFile} from './getFile';
 import log from 'winston';
 
 
@@ -17,6 +18,6 @@ export const serverRouters = (app) => {
     });
     app.post('/login/:email/:pass', login);
     app.get('/findUser/:email', findUser);
-
-    app.post('/addUser/:email/:pass', addUser);
+    app.get('/addUser/:email/:pass', addUser);
+    app.put('/getFile', getFile);
 };
